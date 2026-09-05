@@ -2,6 +2,10 @@
 
 {% block title %}Spendly — Track Every Rupee{% endblock %}
 
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+{% endblock %}
+
 {% block content %}
 
 <section class="hero">
@@ -22,39 +26,57 @@
         </div>
     </div>
     <div class="hero-visual">
-        <div class="mock-card">
-            <div class="mock-card-header">
-                <span class="mock-label">March 2026</span>
-                <span class="mock-total">₹12,450</span>
+        <div class="phone-mockup">
+            <div class="hero-float-badge">
+                <span class="hero-float-badge-dot"></span>
+                18% less than last week
             </div>
-            <div class="mock-bars">
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Bills</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar" style="width: 72%"></div>
+            <div class="phone-frame">
+                <div class="phone-notch"></div>
+                <div class="phone-screen">
+                    <p class="phone-section-label">Spending trend</p>
+                    <div class="phone-stats-row">
+                        <div>
+                            <div class="phone-stat-label">Total</div>
+                            <div class="phone-stat-value">₹8,240</div>
+                        </div>
+                        <div>
+                            <div class="phone-stat-label">Average</div>
+                            <div class="phone-stat-value">₹1,177</div>
+                        </div>
                     </div>
-                    <span class="mock-amt">₹4,500</span>
-                </div>
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Food</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar mock-bar-2" style="width: 52%"></div>
+                    <div class="phone-bars">
+                        <div class="phone-bar" style="height: 100%"><span>₹2,450</span></div>
+                        <div class="phone-bar" style="height: 70%"><span>₹1,720</span></div>
+                        <div class="phone-bar" style="height: 55%"><span>₹1,340</span></div>
+                        <div class="phone-bar" style="height: 40%"><span>₹980</span></div>
+                        <div class="phone-bar" style="height: 62%"><span>₹1,510</span></div>
                     </div>
-                    <span class="mock-amt">₹3,200</span>
-                </div>
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Health</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar mock-bar-3" style="width: 33%"></div>
+                    <div class="phone-bar-dates">
+                        <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span>
                     </div>
-                    <span class="mock-amt">₹2,050</span>
-                </div>
-                <div class="mock-bar-row">
-                    <span class="mock-cat">Transport</span>
-                    <div class="mock-bar-track">
-                        <div class="mock-bar mock-bar-4" style="width: 28%"></div>
+
+                    <p class="phone-section-label">By Category</p>
+                    <div class="phone-donut-wrap">
+                        <div class="phone-donut">
+                            <div class="phone-donut-total">
+                                <strong>₹12,450</strong>
+                                <span>Total</span>
+                            </div>
+                        </div>
                     </div>
-                    <span class="mock-amt">₹1,800</span>
+
+                    <div class="phone-nav">
+                        <div class="phone-nav-item active">
+                            <span class="phone-nav-icon">▤</span>Receipts
+                        </div>
+                        <div class="phone-nav-item">
+                            <span class="phone-nav-icon">◎</span>Statistics
+                        </div>
+                        <div class="phone-nav-item">
+                            <span class="phone-nav-icon">◍</span>Profile
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

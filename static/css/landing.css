@@ -1,0 +1,252 @@
+/* ------------------------------------------------------------------ */
+/* Hero — warm textured background + phone mockup                      */
+/* ------------------------------------------------------------------ */
+
+.hero {
+    position: relative;
+    margin: 2rem auto 0;
+    padding: 4rem 2.5rem;
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 12% 20%, var(--accent-2-light) 0%, transparent 42%),
+        radial-gradient(circle at 88% 80%, var(--accent-light) 0%, transparent 46%),
+        var(--paper-warm);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(var(--border) 1.5px, transparent 1.5px);
+    background-size: 26px 26px;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.hero-inner,
+.hero-visual {
+    position: relative;
+    z-index: 1;
+}
+
+/* Phone mockup */
+
+.phone-mockup {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-float-badge {
+    position: absolute;
+    top: -18px;
+    right: -12px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--paper-card);
+    border-radius: var(--radius-md);
+    padding: 0.65rem 1rem;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.14);
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink);
+    transform: rotate(-3deg);
+}
+
+.hero-float-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+}
+
+.phone-frame {
+    width: 300px;
+    background: var(--ink);
+    border-radius: 42px;
+    padding: 14px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.18);
+    transform: rotate(-6deg);
+}
+
+.phone-notch {
+    width: 90px;
+    height: 22px;
+    background: var(--ink);
+    border-radius: 0 0 14px 14px;
+    margin: 0 auto 10px;
+    position: relative;
+}
+
+.phone-notch::after {
+    content: "";
+    position: absolute;
+    right: 16px;
+    top: 6px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #333;
+}
+
+.phone-screen {
+    background: var(--paper-card);
+    border-radius: 30px;
+    padding: 1.5rem 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.phone-section-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.85rem;
+}
+
+.phone-stats-row {
+    display: flex;
+    gap: 1.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.phone-stat-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-faint);
+    margin-bottom: 0.15rem;
+}
+
+.phone-stat-value {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--ink);
+}
+
+.phone-bars {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.85rem;
+    height: 80px;
+}
+
+.phone-bar {
+    flex: 1;
+    background: var(--accent-2);
+    border-radius: 8px 8px 3px 3px;
+    position: relative;
+}
+
+.phone-bar span {
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.58rem;
+    color: var(--ink-muted);
+    white-space: nowrap;
+}
+
+.phone-bar-dates {
+    display: flex;
+    gap: 0.85rem;
+    margin: 0.5rem 0 1.5rem;
+}
+
+.phone-bar-dates span {
+    flex: 1;
+    text-align: center;
+    font-size: 0.6rem;
+    color: var(--ink-faint);
+}
+
+.phone-donut-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.phone-donut {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: conic-gradient(
+        var(--accent) 0% 22%,
+        var(--accent-2) 22% 42%,
+        #5b7fa6 42% 58%,
+        #8b5e83 58% 70%,
+        #3f8f7a 70% 85%,
+        var(--danger) 85% 100%
+    );
+}
+
+.phone-donut-total {
+    position: relative;
+    z-index: 1;
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    background: var(--paper-card);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.phone-donut-total strong {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--ink);
+}
+
+.phone-donut-total span {
+    font-size: 0.62rem;
+    color: var(--ink-muted);
+}
+
+.phone-nav {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border-soft);
+}
+
+.phone-nav-item {
+    font-size: 0.6rem;
+    color: var(--ink-faint);
+    text-align: center;
+}
+
+.phone-nav-item.active {
+    color: var(--accent-2);
+    font-weight: 600;
+}
+
+.phone-nav-icon {
+    display: block;
+    font-size: 1rem;
+    margin-bottom: 2px;
+}
+
+@media (max-width: 900px) {
+    .hero { margin: 1rem auto 0; }
+}
+
+@media (max-width: 600px) {
+    .hero {
+        padding: 3rem 1.25rem;
+        border-radius: var(--radius-md);
+        margin: 0.5rem auto 0;
+    }
+}
