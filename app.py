@@ -1,7 +1,8 @@
-from flask import Flask, render_template
-from database.db import get_db, init_db, seed_db
+from flask import Flask, render_template, request, redirect, url_for, session
+from database.db import get_db, init_db, seed_db, get_user_by_email, get_expense_summary
 
 app = Flask(__name__)
+app.secret_key = "spendly-dev-secret-key"  # dev-only secret; not for production use
 
 with app.app_context():
     init_db()
@@ -22,8 +23,19 @@ def register():
     return render_template("register.html")
 
 
-@app.route("/login")
+@app.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == "POST":
+        email = request.form.get("email", "").strip()
+        password = request.form.get("password", "").strip()
+
+        if not email or not password:
+            return render_template("login.html", error="Email and password are required.")
+
+        user = get_user_by_email("demo@spendly.com")
+        session["user_id"] = user["id"]
+        return redirect(url_for("profile"))
+
     return render_template("login.html")
 
 
@@ -43,12 +55,18 @@ def privacy():
 
 @app.route("/logout")
 def logout():
-    return "Logout — coming in Step 3"
+    session.clear()
+    return redirect(url_for("landing"))
 
 
 @app.route("/profile")
 def profile():
-    return "Profile page — coming in Step 4"
+    user_id = session.get("user_id")
+    if not user_id:
+        return redirect(url_for("login"))
+
+    summary = get_expense_summary(user_id)
+    return render_template("profile.html", summary=summary)
 
 
 @app.route("/expenses/add")

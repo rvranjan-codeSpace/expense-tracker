@@ -87,3 +87,32 @@ def seed_db():
 
     conn.commit()
     conn.close()
+
+
+def get_user_by_email(email):
+    conn = get_db()
+    user = conn.execute(
+        "SELECT * FROM users WHERE email = ?", (email,)
+    ).fetchone()
+    conn.close()
+    return user
+
+
+def get_expense_summary(user_id):
+    conn = get_db()
+    rows = conn.execute(
+        """
+        SELECT category, SUM(amount) AS total
+        FROM expenses
+        WHERE user_id = ?
+        GROUP BY category
+        ORDER BY total DESC
+        """,
+        (user_id,),
+    ).fetchall()
+    conn.close()
+
+    by_category = [dict(row) for row in rows]
+    total = sum(row["total"] for row in by_category)
+
+    return {"total": total, "by_category": by_category}

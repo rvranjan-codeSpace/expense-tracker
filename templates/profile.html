@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Your spending — Spendly{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="profile-section">
+    <div class="profile-container">
+
+        <div class="profile-header">
+            <h1 class="profile-title">Your spending</h1>
+            <p class="profile-subtitle">A breakdown of everything you've logged</p>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-card-header">
+                <span class="summary-label">Total spent</span>
+                <span class="summary-total">${{ "%.2f"|format(summary.total) }}</span>
+            </div>
+
+            {% if summary.by_category %}
+            <div class="category-list">
+                {% for row in summary.by_category %}
+                <div class="category-row">
+                    <span class="category-name">{{ row.category }}</span>
+                    <div class="category-bar-track">
+                        <div class="category-bar"
+                             style="width: {{ (row.total / summary.by_category[0].total * 100)|round(1) }}%"></div>
+                    </div>
+                    <span class="category-amount">${{ "%.2f"|format(row.total) }}</span>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="category-empty">No expenses logged yet.</p>
+            {% endif %}
+        </div>
+
+    </div>
+</section>
+{% endblock %}
